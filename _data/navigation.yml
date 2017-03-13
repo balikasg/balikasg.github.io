@@ -1,9 +1,9 @@
 # main links
 main:
-     - title: "Home"
-     url : https://balikasg.github.io/
-     - title: "Research"
-     url: /research/
+  - title: "Quick-Start Guide"
+    url: /docs/quick-start-guide/
+  - title: "About"
+    url: /about/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
