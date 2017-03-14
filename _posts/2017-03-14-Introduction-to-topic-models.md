@@ -24,7 +24,7 @@ Of course, there is a catch in this. The problem is that we only observe the doc
 This process is also shown in Table 1. The Table illustrates the words that constitute five topics, when LDA is applied on a set of Wikipedia documents. Note, here, that the titles Science, Art, Cinema, etc. were selected manually.  The algorithm only returns the words that constitute the tweets.
 
 |Science | Art | Cinema | Music | Elections| 
-|:-------------: | :--------------------------: | :---------------:| :---------------:|
+|:-------------: | :--------------------------: | :---------------:| :---------------:|:---------------:|
 | university | art | film | record | election |
 | research | new | role | music | canadian |
 | science| york | televis | band | serve |
