@@ -1,9 +1,9 @@
 ---
 title:  "Introduction to topic models"
 categories:
-  - Machine Learning
+  - Machine-Learning
 tags:
-  - topic modeling 
+  - topic-modeling 
 ---
 
 
