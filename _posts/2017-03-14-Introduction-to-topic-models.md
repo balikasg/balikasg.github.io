@@ -19,7 +19,16 @@ $$ d_i = 0.8\times\text{Sports} + 0.2\times\text{education}$$
 which would mean that 80% of the words of  $d_1$ come from the `Sports` topic, while 20% from the `Education` topic. Once we have these mixture coefficients (0.8, 0.2 in the example), we can estimate a semantic similarity between documents or enable other types of applications. 
 
 
-Of course, there is a catch in this. The problem is that we only observe the documents. Therefore, we need an algorithm for identifying (i) the topics (semantically coherent group of words)  and, (ii) which topics occur in a document and in what extent. The (i) point means we need to identify in some way that words like`[ball, team]` and `[mercury, and `arsenic]` are semantically coherent. To do this we make use of the fact that words to tend to co-occur in similar contexts, should be similar (paraphrasing the expression "show me your friend and I will tell you who you are").  Once we achieve (i), (ii) can be seen as a by-product of it. 
+Of course, there is a catch in this. The problem is that we only observe the documents. Therefore, we need an algorithm for identifying (i) the topics (semantically coherent group of words)  and, (ii) which topics occur in a document and in what extent. The (i) point means we need to identify in some way that words like`[ball, team]` and `[mercury, and arsenic]` are semantically coherent. To do this we make use of the fact that words to tend to co-occur in similar contexts, should be similar (paraphrasing the expression "show me your friend and I will tell you who you are").  Once we achieve (i), (ii) can be seen as a by-product of it. 
+
+This process is also shown in Table 1. The Table illustrates the words that constitute five topics, when LDA is applied on a set of Wikipedia documents. Note, here, that the titles Science, Art, Cinema, etc. were selected manually.  The algorithm only returns the words that constitute the tweets.
+
+|Science | Art | Cinema | Music | Elections| 
+|:-------------: | :--------------------------: | :---------------:| :---------------:|
+| university | art | film | record | election |
+| research | new | role | music | canadian |
+| science| york | televis | band | serve |
+| professor |paint|role|album|party |
 
 
 
