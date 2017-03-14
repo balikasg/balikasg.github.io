@@ -1,9 +1,7 @@
 ---
 title:  "Introduction to topic models"
-categories:
-  - Machine-Learning
-tags:
-  - topic-modeling 
+categories: ["Machine Learning", "Data Science"]
+tags: ["topic modeling", "unsupervised learning"]
 ---
 
 
