@@ -17,12 +17,18 @@ Here is a list of publications made during my PhD.
 
 - Georgios Balikas, Aris Kosmopoulos, Anastasia Krithara, Georgios Paliouras and Ioannis Kakadiaris **Results of the BioASQ Tasks of the Question Answering Lab at CLEF 2015**, *CLEF 2015*, Toulouse, 2015.
 
+- Georgios Balikas, Ioannis Partalas, Axel-Cyrille Ngonga Ngomo, Anastasia Krithara, Georgios Paliouras: **Results of the BioASQ Track of the Question Answering Lab at CLEF 2014**, *CLEF 2014*, Sheffield, UK, 2014.
+
 ## Short Papers
 
 - Georgios Balikas, Massih-Reza Amini and Marianne Clausel: **On a topic model for sentences**, *SIGIR 2016*, Pisa, Italy, 2016
 
 - Georgios Balikas and Massih-Reza Amini: **Multi-label, Multi-class Classification Using Polylingual Embeddings**, *ECIR 2016*, Padua, Italy, 2016.
 
+
+
+## Journal Paper
+G. Tsatsaronis, G. Balikas, P. Malakasiotis, I. Partalas, M. Zschunke, M. R. Alvers, D. Weissenborn, A. Krithara, S. Petridis, D. Polychronopoulos, Y. Almirantis I. Androutsopoulos, J. Pavlopoulos, N. Baskiotis, P. Gallinari, T. Artieres, A. Ngonga, N. Heino, E. Gaussier, L. Barrio-Alvers, M. Schroeder and G. Paliouras: **An overview of the BioASQ large-scale biomedical semantic indexing and question answering competition**, *BMC Bioinformatics*
 
 ## Workshop Papers
 
@@ -32,3 +38,10 @@ Here is a list of publications made during my PhD.
 
 - Georgios Balikas and Massih-Reza Amini: **The participation of UJF-Grenoble team at Multiling 2015**, *Multiling 2015*, 2015 [pdf].
 
+- Georgios Balikas, Anastasia Krithara, Ioannis Partalas, Georgios Paliouras: **BioASQ: A challenge on large-scale biomedical semantic indexing and question-answering**, In *Multimodal Retrieval in the Medical Domain@ECIR 2015*, 2015. 
+
+
+## National Conferences
+- Anil Goyal, Georgios Balikas, Prantapa Goswami, Massih-Reza Amini and Eric Gaussier: **Transfer Learning for IR Model Parameter Tuning**, *Conf\E9rence Francophone sur l'Apprentissage Automatique (CAp)*, Lille, 2015.
+
+- Georgios Balikas and Massih-Reza Amini: **Learning language-independent sentence representations for multi-lingual, multi-document summarization**, *Conf\E9rence Francophone sur l'Apprentissage Automatique (CAp)*, Lille, 2015.
