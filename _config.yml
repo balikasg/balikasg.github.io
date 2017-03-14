@@ -79,9 +79,9 @@ analytics:
 author:
   name             : "Georgios Balikas"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Data Scientist/Machine Learning Enthusiast"
+  bio              : "PhD student in Machine Learning"
   location         : "Grenoble, France"
-  email            :
+  email            : "georgios.balikas@imag.fr"
   uri              :
   bitbucket        :
   codepen          :
@@ -89,22 +89,22 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : "https://github.com/balikasg/"
   google_plus      :
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         :
+  linkedin         : "https://www.linkedin.com/in/george-balikas-311b6b37?trk=nav_responsive_tab_profile_pic"
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
+  stackoverflow    : "1881878/geompalik" # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
   steam            :
   tumblr           :
-  twitter          :
+  twitter          : "balikasg"
   vine             :
   weibo            :
   xing             :
-  youtube          : # "https://youtube.com/c/MichaelRoseDesign"
+  youtube          :
 
 
 # Reading Files
