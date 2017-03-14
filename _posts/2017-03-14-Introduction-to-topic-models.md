@@ -1,9 +1,9 @@
 ---
 title:  "Introduction to topic models"
 categories:
-  - Jekyll
+  - Machine Learning
 tags:
-  - update
+  - topic modeling 
 ---
 
 
