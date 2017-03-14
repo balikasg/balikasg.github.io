@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en"
-title                    : "My personal Website"
+title                    : "My Personal Website & Blog"
 title_separator          : "-"
 name                     : "Georgios Balikas"
 description              : "Georgios Balikas, Personal Website, Machine Learning, Data Science, Natural Language Processing, NLP, Python, scikit-learn, sklearn, deep learning."
@@ -79,7 +79,7 @@ analytics:
 author:
   name             : "Georgios Balikas"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "PhD student in Machine Learning"
+  bio              : "Data Scientist/Machine Learning enthousiast!"
   location         : "Grenoble, France"
   email            : "georgios.balikas@imag.fr"
   uri              :
