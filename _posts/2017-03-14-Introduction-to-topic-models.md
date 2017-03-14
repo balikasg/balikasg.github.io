@@ -1,5 +1,5 @@
 ---
-title:  "Introduction to topic models:
+title:  "Introduction to topic models"
 categories:
   - Jekyll
 tags:
