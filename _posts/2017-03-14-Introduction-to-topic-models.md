@@ -50,9 +50,3 @@ where $\beta$ is a hyper-parameter, that is a variable whose value we need to tu
 Repeating this process in the scale of the document collection allows us to uncover both the topic and the topic distributions of the  documents.  Of course, there are long mathematical proofs of the convergence of this process that I do not detail here. 
 
 
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: http://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
