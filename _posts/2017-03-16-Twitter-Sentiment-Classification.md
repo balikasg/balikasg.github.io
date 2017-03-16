@@ -1,52 +1,26 @@
 ---
-title:  "Introduction to topic models"
+title:  "Twitter Sentiment Classification: A Comparative Study"
 categories: ["Machine Learning", "Data Science"]
-tags: ["topic modeling", "unsupervised learning"]
+tags: ["text classification", "sentiment analysis"]
 mathjax: true
 ---
 
 
-# The concept of topic models
-The most known topic model, which is the one that I used throughout my thesis as well, is called Latent Dirichlet Allocation (LDA). A topic model is an algorithm that describes an iterative process, whose goal is to uncover the latent themes ("topics" in the topic modeling jargon) that are assumed to generate the words of a document collection. In this post I present some basic concepts of topic modeling. 
+# Twitter Sentiment Classification
 
-The first question the above definition raises concerns these themes/topics: they are groups of words that tend to be semantically coherent and have different probabilities of appearance in text passages that discuss those topics. Imagine, for instance, a topic "Sports" and a topic "Chemistry". Words like "ball", "team" and "score" should have high probability of appearance when the topic is "Sports" and low probability when the topic is "Chemistry". On the other hand, words like "mercury", and "arsenic" should have high probability of appearance when the topic is "Chemistry". The tricky part here is that words do not belong to only a single topic, they belong to every topic, but their probabilities are quite different. For some topics a particular word may appear with very high probability while for other with very low.
+In this series of posts I will discuss the task of sentiment classification of tweets. Sentiment analysis, as a subfield of opinion mining, has received a lot of attention lately, mainly due to the wide range of applications it enables. Understanding how people feel about different ideas or products for example, can be valuable for marketing purposes. At the same time, the problem is interesting from a research point-of-view as people tend to exress their sentiment and opinions in various ways, often using complex linguistic phenomena like irony or humor. What is more, moving from well structured data like paragraph-sized Amazon reviews to tweets  posses extra challenges as the latter are very short and use creative language, lots of abbreviations etc. For such reasons and also due to the representativeness and easy of data access of Twitter, the subject is very popular. 
 
+I first dealt with sentiment classification in the framework of Task 4 of the SemEval-2016 challenges. The challenge was given a set of tweets to perform different classification tasks like binary classification (Positive/Negative), ternary classification (Positive, Neutral, Negative) or fine-grained classification (VeryNegative, Negative, Neutral, Positive, VeryPositive). In this blogpost I will focus on the ternary sentiment classification task as it is very popular. The Table below shows some example tweets for each sentiment category. Notice the twitter-specific language like mentions @someone, emoticons :q etc. which make the analysis and classification step  challenging. 
 
-Therefore, there is an inherent assumption in topic models that there is a set of topic underlying a text collection (=group of documents). Moreover, each document is a mixture of these topics. This means that a document $d_1$ can be seen as 
-
-$$ d_i = 0.8\times\text{Sports} + 0.2\times\text{education}$$
-
-which would mean that 80% of the words of  $d_1$ come from the `Sports` topic, while 20% from the `Education` topic. Once we have these mixture coefficients (0.8, 0.2 in the example), we can estimate a semantic similarity between documents or enable other types of applications. 
-
-
-Of course, there is a catch in this. The problem is that we only observe the documents. Therefore, we need an algorithm for identifying (i) the topics (semantically coherent group of words)  and, (ii) which topics occur in a document and in what extent. The (i) point means we need to identify in some way that words like`[ball, team]` and `[mercury, and arsenic]` are semantically coherent. To do this we make use of the fact that words to tend to co-occur in similar contexts, should be similar (paraphrasing the expression "show me your friend and I will tell you who you are").  Once we achieve (i), (ii) can be seen as a by-product of it. 
-
-This process is also shown in Table 1. The Table illustrates the words that constitute five topics, when LDA is applied on a set of Wikipedia documents. Note, here, that the titles Science, Art, Cinema, etc. were selected manually.  The algorithm only returns the words that constitute the tweets.
-
-|Science | Art | Cinema | Music | Elections| 
-|:-------------: | :--------------------------: | :---------------:| :---------------:|:---------------:|
-| university | art | film | record | election |
-| research | new | role | music | canadian |
-| science| york | televis | band | serve |
-| professor |paint|role|album|party |
+| Category | Example |
+|:-------------: | :--------------------------: |
+*Negative* |     @Microsoft Heard you are a software company. Why then is most of your software so bad that it has to be replaced by 3rd party apps? |
+*Neutral*  |     @ProfessorF @gilwuvsyou @Microsoft @LivioDeLaCruz We already knew the media march in ideological lockstep but it is nice of him to show it.|
+*Positive*  |     PAX Prime Thursday is overloaded for me with @Microsoft and Nintendo indie events going down. Also, cider!!! :p |
 
 
-# Inference
+As in any machine learning pipeline, to demonstrate the effectiveness of machine learning tools we will first apply a feature extraction step and then feed a classification system. Then, we will revisit the feature extraction process to add more features that were shown to be suitable for sentiment analysis and we will evaluate their effect. For demonstration purposes I will be using the data released by the organisers of Task 4 of SemEval-2017 that also comprised various sentiment Twitter classification problems. 
 
-As discussed above, the inference problem  of topic models is to discover the topics. In reality, we only have access to the words that constitute the documents and we do not directly observe topics. The topic modeling objective is to extrapolate from the statistical behavior and co-occurrence of words and construct the coherent groups of words. 
-Unfortunately, there is no way to infer the topics exactly: there are too many unknowns in the beginning. To overcome this problem we rely on Markov Chain Monte Carlo sampling mechanisms. To avoid confusion I will simply describe the rationale behind them. 
 
-To understand how inference works let us pretend for a moment that we had the problem mostly solved. Consider the toy example where we know the topics of every words and document and there is a single word, the last one, that remains and we need to find its topic. It is the word `player` for example. The question is "Which is the topic of `player`" ? Or even better: What is the probability that `player` was  generated by the topic $k$?
-Although we can not know for sure, we can answer the questions while considering two facts: (a) has `player` been generated by the topic $k$ previously in out collection? and (b) Is topic $k$ a common topic in the rest of the document? 
-
-The idea behind question (a) is that if `player` often occurs in discussions of $k$, then this instance of `player` might as well have high probability to belong to $k$. But a word can be common in more than one topic. And we don't want to assign `player` to a topic about `sports` if this document is mostly about `Elections` and to overcome this we also need to consider the answer of question (b).
-
-To formulate (a) and (b), we consider the probability that stems from the 
-frequency of this word type (`player`) with topic $k$ by the number of other words in document $d$ that already belong to $k$. The result will represent the probability that this word came from $k$. The actual formula (the only formula in this document):
-
-$$ p(\text{word $w$ has topic } k | W,D)= \frac{\text{\# of times $w$ appears with $k$}+\beta}{\text{Total tokens in } k+\beta} $$
-
-where $\beta$ is a hyper-parameter, that is a variable whose value we need to tune and $W,D$ refer to the rest of the words and topic assigned to them in the corpus.
-Repeating this process in the scale of the document collection allows us to uncover both the topic and the topic distributions of the  documents.  Of course, there are long mathematical proofs of the convergence of this process that I do not detail here. 
 
 
