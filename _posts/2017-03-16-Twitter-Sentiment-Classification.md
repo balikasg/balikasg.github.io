@@ -17,17 +17,34 @@ I first dealt with sentiment classification in the framework of Task 4 of the Se
 | *Negative* |     @Microsoft Heard you are a software company. Why then is most of your software so bad that it has to be replaced by 3rd party apps? |
 | *Neutral*  |     @ProfessorF @gilwuvsyou @Microsoft @LivioDeLaCruz We already knew the media march in ideological lockstep but it is nice of him to show it.|
 | *Positive*  |     PAX Prime Thursday is overloaded for me with @Microsoft and Nintendo indie events going down. Also, cider!!! :p |
-Table: Examples of tweets for each category
+
 
 
 As in any machine learning pipeline, to demonstrate the effectiveness of machine learning tools we will first apply a feature extraction step and then feed a classification system. Then, we will revisit the feature extraction process to add more features that were shown to be suitable for sentiment analysis and we will evaluate their effect. For demonstration purposes I will be using the data released by the organisers of Task 4 of SemEval-2017 that also comprised various sentiment Twitter classification problems. The data are available [here.](http://alt.qcri.org/semeval2017/task4/?id=download-the-full-training-data-for-semeval-2017-task-4) In the Table below you may find the distribution of the tweets over the categories.
 
 | Category | # of instances |
 |:-------------: | :--------------------------: |
-| *Negative* |
-| *Neutral*  |
-| *Positive* |
-Table: Distribution of tweets over the sentiment categories
+| *Negative* | XX |
+| *Neutral*  | XX |
+| *Positive* | XX |
+
+
+
+Without further a-do let's load the data and build a classifier using standard vectorization methods. In this step we will compare the `CountVectorizer`, `TfIdfVectorizer` and `HashingVectorizer` of `sklearn`. 
+
+```python
+for vect in [(CountVectorizer( ngram_range=(1,1), analyzer='word', min_df=5, tokenizer=tokenizer.tokenize,), CountVectorizer( ngram_range=(3,5), analyzer='char', min_df=5, tokenizer=tokenizer.tokenize)),
+            (TfidfVectorizer( ngram_range=(1,1), analyzer='word', min_df=5, tokenizer=tokenizer.tokenize,), TfidfVectorizer( ngram_range=(3,5), analyzer='char', min_df=5, tokenizer=tokenizer.tokenize))]: 
+    my_vect = pipeline.FeatureUnion([("ngram", vect[0]), ("cgram", vect[1])], n_jobs=1)
+    X = my_vect.fit_transform(text_train)
+    clf = grid_search.GridSearchCV(linear_model.LogisticRegression(class_weight='balanced'), param_grid={"C":[0.01, 0.1, 1, 10]}, cv=3, n_jobs =-1, scoring='recall_macro' )
+    clf.fit(X, y_train)
+    preds = clf.predict(my_vect.transform(text_test))
+    print metrics.recall_score(y_test, preds, average='macro')
+
+```
+
+As you can see from the snippet above...
 
 
 
