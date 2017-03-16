@@ -14,12 +14,21 @@ I first dealt with sentiment classification in the framework of Task 4 of the Se
 
 | Category | Example |
 |:-------------: | :--------------------------: |
-*Negative* |     @Microsoft Heard you are a software company. Why then is most of your software so bad that it has to be replaced by 3rd party apps? |
-*Neutral*  |     @ProfessorF @gilwuvsyou @Microsoft @LivioDeLaCruz We already knew the media march in ideological lockstep but it is nice of him to show it.|
-*Positive*  |     PAX Prime Thursday is overloaded for me with @Microsoft and Nintendo indie events going down. Also, cider!!! :p |
+| *Negative* |     @Microsoft Heard you are a software company. Why then is most of your software so bad that it has to be replaced by 3rd party apps? |
+| *Neutral*  |     @ProfessorF @gilwuvsyou @Microsoft @LivioDeLaCruz We already knew the media march in ideological lockstep but it is nice of him to show it.|
+| *Positive*  |     PAX Prime Thursday is overloaded for me with @Microsoft and Nintendo indie events going down. Also, cider!!! :p |
+Table: Examples of tweets for each category
 
 
-As in any machine learning pipeline, to demonstrate the effectiveness of machine learning tools we will first apply a feature extraction step and then feed a classification system. Then, we will revisit the feature extraction process to add more features that were shown to be suitable for sentiment analysis and we will evaluate their effect. For demonstration purposes I will be using the data released by the organisers of Task 4 of SemEval-2017 that also comprised various sentiment Twitter classification problems. 
+As in any machine learning pipeline, to demonstrate the effectiveness of machine learning tools we will first apply a feature extraction step and then feed a classification system. Then, we will revisit the feature extraction process to add more features that were shown to be suitable for sentiment analysis and we will evaluate their effect. For demonstration purposes I will be using the data released by the organisers of Task 4 of SemEval-2017 that also comprised various sentiment Twitter classification problems. The data are available [here.](http://alt.qcri.org/semeval2017/task4/?id=download-the-full-training-data-for-semeval-2017-task-4) In the Table below you may find the distribution of the tweets over the categories.
+
+| Category | # of instances |
+|:-------------: | :--------------------------: |
+| *Negative* |
+| *Neutral*  |
+| *Positive* |
+Table: Distribution of tweets over the sentiment categories
+
 
 
 
