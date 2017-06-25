@@ -35,6 +35,8 @@ G. Tsatsaronis, G. Balikas, P. Malakasiotis, I. Partalas, M. Zschunke, M. R. Alv
 
 ## Workshop Papers
 
+- Georgios Balikas: TwiSe at SemEval-2017 Task 4: Five-point Twitter Sentiment Classification and Quantification, SemEval-2017@ACL, Vancouver, Canada, 2017, **Ranked 2/12** in Subtask E: "Fine-grained Twitter Quantification"  
+
 - Georgios Balikas and Massih-Reza Amini: **TwiSE at SemEval-2016 Task: Twitter Sentiment Classification**, SemEval-2016@NAACL, San Diego, USA, 2016. **Ranked 1/11** in subtask C "Tweet classification according to a five-point scale". **Ranked: 2/14** in subtask D "Tweet quantification according to a two-point scale".
 
 - Georgios Balikas and Massih-Reza Amini: **An empirical study on large scale text classification with skip-gram embeddings**,*Neu-IR@SIGIR 2016*, Pisa, Italy, 2016. [pdf].
