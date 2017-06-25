@@ -30,7 +30,14 @@ As in any machine learning pipeline, to demonstrate the effectiveness of machine
 
 
 
-Without further a-do let's load the data and build a classifier using standard vectorization methods. In this step we will compare the `CountVectorizer`, `TfIdfVectorizer` and `HashingVectorizer` of `sklearn`. 
+Without further a-do let's load the data and build a classifier using standard vectorization methods. 
+An important issue when dealing with tweets is tokenizing the correctly. Space padding punctuation symbols should be as this may have a negative effect on emoticons, hashtags (strings starting with #), and mentions (strings starting with @). Text transformations also, as ;-D and ;-d are different in meaning. One needs to be careful, and a good practice is to manually inspect some tweets after any transformation to make sure that nothing broke. In the rest, I am using a custom tokenizers adapted from the work of Christopher Potts that you can find [here.](https://github.com/balikasg/SemEval2016-Twitter_Sentiment_Evaluation/blob/master/src/subtaskD/twitterTokenizer.py) 
+
+In the remaining of the post I will compare the effect of feature extraction and engineering for the task. 
+
+
+
+In this step we will compare the `CountVectorizer`, `TfIdfVectorizer` and `HashingVectorizer` of `sklearn`. 
 
 ```python
 for vect in [(CountVectorizer( ngram_range=(1,1), analyzer='word', min_df=5, tokenizer=tokenizer.tokenize,), CountVectorizer( ngram_range=(3,5), analyzer='char', min_df=5, tokenizer=tokenizer.tokenize)),
