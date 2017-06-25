@@ -47,7 +47,7 @@ G. Tsatsaronis, G. Balikas, P. Malakasiotis, I. Partalas, M. Zschunke, M. R. Alv
 
 
 ## National Conferences
--Simon Moura, Balikas Georgios: **Multitask Learning for Fine-Grained Twitter Sentiment Analysis**, *Conf\E9rence Francophone sur l'Apprentissage Automatique (CAp)*, Lille, 2017.
+- Simon Moura, Balikas Georgios: **Multitask Learning for Fine-Grained Twitter Sentiment Analysis**, *Conf\E9rence Francophone sur l'Apprentissage Automatique (CAp)*, Lille, 2017.
 
 - Anil Goyal, Georgios Balikas, Prantapa Goswami, Massih-Reza Amini and Eric Gaussier: **Transfer Learning for IR Model Parameter Tuning**, *Conf\E9rence Francophone sur l'Apprentissage Automatique (CAp)*, Lille, 2015.
 
