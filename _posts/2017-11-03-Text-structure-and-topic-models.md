@@ -26,3 +26,6 @@ To illustrate this better in the following figure I illustrate the topics that L
 
 
 ![alt text](https://github.com/balikasg/balikasg.github.io/blob/master/assets/example.png "LDA: topics discovered for the words of the excerpt. ")
+
+
+![useful image]({{ site.url }}/assets/example.png)
