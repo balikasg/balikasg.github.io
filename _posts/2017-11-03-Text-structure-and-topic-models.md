@@ -33,6 +33,7 @@ The limitation of LDA that the previous figure exposed is due to the exchangeabi
 
 To overcome this limitation of LDA, we have recently proposed two extensions of the model. The first assumes a complete dependence between the topics of the words of a segment. To do that it modifies the generative story of the topic model so that the topic of the segment words is sampled once. In this case, by definition, the words of a segment are topically coherent and the dependence is maximal. This work is described in [1]. The second proposes a more flexible dependence mechanism that relies on copulas. [Copulas](https://en.wikipedia.org/wiki/Copula_(probability_theory) "Wikipedia article for copulas") are a powerful statistical framework that allow to model joint cumulative distribution function as a function of univariate marginal functions. The nice thing here is that one can model the dependence between two (or more) random variables irrespective of the marginal distributions of these random variables.  Copulas are more flexible as they allow different degrees of dependence, which results in better performance. This work is discussed in detail in [2]. 
 
+![Copulas: sample from a Frank copula]({{ site.url }}/assets/copulas.gif)
 
 
 [1]: G. Balikas, MR Amini, M. Clausel: Latent Dirichlet Allocation, SIGIR, 2016  [[pdf]](https://arxiv.org/abs/1606.00253 "SIGIR'16 paper")
