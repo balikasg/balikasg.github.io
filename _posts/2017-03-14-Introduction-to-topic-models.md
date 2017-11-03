@@ -5,6 +5,15 @@ tags: ["topic modeling", "unsupervised learning"]
 mathjax: true
 ---
 
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
 
 # The concept of topic models
 The most known topic model, which is the one that I used throughout my thesis as well, is called Latent Dirichlet Allocation (LDA). A topic model is an algorithm that describes an iterative process, whose goal is to uncover the latent themes ("topics" in the topic modeling jargon) that are assumed to generate the words of a document collection. In this post I present some basic concepts of topic modeling. 
