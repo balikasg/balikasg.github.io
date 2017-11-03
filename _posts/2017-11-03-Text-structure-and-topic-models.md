@@ -22,7 +22,7 @@ Topic models like Latent Dirichlet Allocation (LDA) are a class of unsupervised 
 To illustrate this better in the following figure I illustrate the topics that LDA has discovered 
 
 
-<img src="assets/example.png" alt="hi" class="inline"/>
+<img src="https://github.com/balikasg/balikasg.github.io/blob/master/assets/example.png" alt="hi" class="inline"/>
 
 
 ![alt text](https://github.com/balikasg/balikasg.github.io/blob/master/assets/example.png "LDA: topics discovered for the words of the excerpt. ")
