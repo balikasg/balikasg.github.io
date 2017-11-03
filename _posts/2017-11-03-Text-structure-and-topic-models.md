@@ -29,6 +29,8 @@ To illustrate this better in the following figure I show the topics that LDA has
 ![LDA inference result]({{ site.url }}/assets/example.png)
 
 
-The limitation of LDA 
+The limitation of LDA that the previous figure exposed is due to the exchangeability assumption and the the bag-of-words representation of the documents of a collection. LDA is structure-agnostic in the sense that it cannot assign consistently topics to small segments by design. Therefore, it would be nice if one could extend LDA to account for such text structure. Knowledge of text structure in the form of short text spans consisting of contiguous words has been shown to be beneficial for machine learning and natural language processing tasks. Several well studied approaches like linguistic analysis of sentences or heuristics like $n$-grams are heavily used in text mining applications like classification, clustering and named entity recognition.
+
+To overcome this limitation of LDA, we have recently proposed two extensions. 
 
 
