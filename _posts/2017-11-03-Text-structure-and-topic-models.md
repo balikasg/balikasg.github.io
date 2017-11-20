@@ -5,6 +5,10 @@ tags: ["topic modeling", "unsupervised learning"]
 mathjax: true
 ---
 
+
+In the previous post I introduced Latent Dirichlet Allocation, which is a popular topic model. In this post I highlight one of the limitations of LDA: its inability to model text structure. After demonstrating the reasons why, I am introducing part of my published work that alleviates this limitation.
+
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -13,10 +17,9 @@ mathjax: true
     }
   });
 </script>
+ 
 
-
-# Topic models and the exhangeability assumtpion
-
+# Topic models and the exhangeability assumption
 Topic models like Latent Dirichlet Allocation (LDA) are a class of unsupervised models used to uncover the hidden themes that have generated a text collection. An explicit assumption underlying LDA is exchangeability that stipulates that the topics of the words are conditionally independent given the document topic distributions. In other words, documents are represented as bag-of-words and the association of topics with words does not account for any type of data structure. This is particularly important as it enables fast inference. Since, however, text structure is ignored it can lead to  suboptimal results. 
 
 To illustrate this better in the following figure I show the topics that LDA has discovered is a short excerpt from a Wikipedia document for a movie. There are two main observations from the figure: 
@@ -40,9 +43,10 @@ The limitation of LDA that the previous figure exposed is due to the exchangeabi
 
 
 
-Here, $Dir$ is the Dirichlet distribution, $\alpha, \beta$ are the Dirichlet concentration parameters and $Cat$ stands for a draw from a Categorical distribution. Also, $\alpha, \beta$ being scalars implies symmetric priors.
-In the generative story, that is a set of assumptions on how a document collection is generated,  notice how sampling the topics of the words from the document topic distribution $\theta_i$ is a sequencial process that ignores structure. Hence, the behavior of LDA that we detailed in the example figure is by design. 
-LDA is structure-agnostic in the sense that it cannot assign consistently topics to small segments by design. Therefore, it would be nice if one could extend LDA to account for such text structure. Knowledge of text structure in the form of short text spans consisting of contiguous words has been shown to be beneficial for machine learning and natural language processing tasks. Several well studied approaches like linguistic analysis of sentences or heuristics like $n$-grams are heavily used in text mining applications like classification, clustering and named entity recognition.
+Here, $Dir$ is a draw from the Dirichlet distribution, $\alpha, \beta$ are the Dirichlet concentration parameters and $Cat$ stands for a draw from a Categorical distribution. Also, $\alpha, \beta$ being scalars implies symmetric priors; these values are usually set such that $\alpha, \beta \lt\lt 1$ so as to obtain sparse word and document topic distributions.
+In this generative story, that is a set of assumptions on how a document collection is generated,  notice how sampling the topics of the words from the document topic distribution $\theta_i$ is a sequential process that ignores structure. Hence, the behavior of LDA where structure is not taken into account as we detailed in the example figure is due to the model's design. 
+
+LDA is structure-agnostic in the sense that it cannot assign consistently topics to small segments by design. Since this may be counter-intuitive for humans, it would be nice if one could extend LDA to account for such text structure. Knowledge of text structure in the form of short text spans consisting of contiguous words has been shown to be beneficial for machine learning and natural language processing tasks. Several well studied approaches like linguistic analysis of sentences or heuristics like $n$-grams are heavily used in text mining applications like classification, clustering and named entity recognition.
 
 To overcome this limitation of LDA, we have recently proposed two extensions of the model. The first assumes a complete dependence between the topics of the words of a segment. To do that it modifies the generative story of the topic model so that the topic of the segment words is sampled once. In this case, by definition, the words of a segment are topically coherent and the dependence is maximal. This work is described in [1]. The second proposes a more flexible dependence mechanism that relies on copulas. [Copulas](https://en.wikipedia.org/wiki/Copula_(probability_theory) "Wikipedia article for copulas") are a powerful statistical framework that allow to model joint cumulative distribution function as a function of univariate marginal functions. The nice thing here is that one can model the dependence between two (or more) random variables irrespective of the marginal distributions of these random variables.  Copulas are more flexible as they allow different degrees of dependence, which results in better performance. This work is discussed in detail in [2]. 
 
