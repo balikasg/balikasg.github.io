@@ -70,8 +70,21 @@ Two very important advantages stem from the addition of the regularization term 
 I will illustrate these points in a following example. 
 
 
-# Cross-lingual document retrieval 
-Known search cross-lingual retrieval is the task where given a query, one must retrieve one document from a set of documents that responds to the information need as described by the query. In the known search problem, one knows in advance that there is a single document that 
 
+
+# Cross-lingual document retrieval 
+Known search cross-lingual retrieval is the task where given a query, one must retrieve one document from a set of documents that responds to the information need as described by the query. In the known search problem, we know in advance that there is a *single* document that satisfies the information need. One realistic scenario for the problem is Wikipedia. Wikipedia documents are written in different languages; documents that discuss the same topic are linked with inter-language links. It is  common to take advantage of these links to construct interesting cross-lingual tasks and cross-lingual retrieval is one of them. A query document is given in language $l_1$ (English for example) and the associated document written in another language (French for example) must be retrieved. The documents between languages may be exact translations, broad translations in the sense that parts of a source document (usually of the English) have been translated in another language or just semantically associated as they were written from different people for the same subject.  
+
+Applying the Wasserstein distance for cross-ligual retrieval in this case relies on estimating the distance of the query documents with the documents to be retrieved and proposing the document with the smallest distance. 
+
+# The effect of regularization
+In the figure below I illustrate the effect of the regularization when solving the minimization problem. There are two sentences whose distance we want to calculate: "The cat sit on the mat" and its translation in French "Le chat est assis sur le tapis". The figure show the transport plan  between the words of the sentences for different values of $\lambda$, which is the regulatization coefficient. Notice that the optimal associations are obtained for $\lambda=0.01$ while for other values the transport plan is suboptimal. 
+
+![Cross-lingual example]({{ site.url }}/assets/iexampleCrossLingualRetrieval.png)
+ 
+
+
+# Results
+It turns out that high quality cross-lingual word embeddings with the Wasserstein distance perform really well. In particular, they outperform the neural bag-of-words baseline by a large margin as well as topic models and a method that relies on translation. Further, the regularized version of the Wasserstein distance performs better than the simple version, which is interesting! For more information and details on the experimental part, take a look at the paper results! 
 
 
