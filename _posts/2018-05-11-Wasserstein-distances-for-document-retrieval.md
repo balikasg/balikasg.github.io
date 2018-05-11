@@ -80,7 +80,7 @@ Applying the Wasserstein distance for cross-ligual retrieval in this case relies
 # The effect of regularization
 In the figure below I illustrate the effect of the regularization when solving the minimization problem. There are two sentences whose distance we want to calculate: "The cat sit on the mat" and its translation in French "Le chat est assis sur le tapis". The figure show the transport plan  between the words of the sentences for different values of $\lambda$, which is the regulatization coefficient. Notice that the optimal associations are obtained for $\lambda=0.01$ while for other values the transport plan is suboptimal. 
 
-![Cross-lingual example]({{ site.url }}/assets/iexampleCrossLingualRetrieval.png)
+![Cross-lingual example]({{ site.url }}/assets/exampleCrossLingualRetrieval.png)
  
 
 
