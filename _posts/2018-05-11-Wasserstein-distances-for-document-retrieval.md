@@ -6,7 +6,7 @@ mathjax: true
 ---
 
 In this post I would like to detail the ideas behind our ECIR 2018 paper, titled "Cross-lingual Document Retrieval using
-Regularized Wasserstein Distance". While the paper's title may sound complicated, I believe the central idea is straight-forward. The paper builds on the seminal work of [M. Kusner et al.](http://proceedings.mlr.press/v37/kusnerb15.pdf) where they propose to combine the expressiveness of word embeddings with the theory of optimal transport. 
+Regularized Wasserstein Distance". In case the paper's title sounds complicated, bear with me as the central idea is straight-forward. The paper builds on the seminal work of [M. Kusner et al.](http://proceedings.mlr.press/v37/kusnerb15.pdf) where they propose to combine the expressiveness of word embeddings with the theory of optimal transport. 
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -19,11 +19,18 @@ Regularized Wasserstein Distance". While the paper's title may sound complicated
 
 
 # The problem of optimal transport
-The problem of optimal transport is a well-studied problem with a long history starting as back as 1940.  In its original formulation by Monge the problem is defined as follows: Given two distributions of equal masses, find a transport map $\gamma$  which transfers the first distribution to the second and minimizes the associated transport cost. There are mathematical formulations for the problem both for the continuous and the discrete case. For simplicity, I will skip the mathematical forumaltion of the problem as it can be found both in the paper and in several textbooks: e.g., from G. Peyré and M. Cuturi [here](https://optimaltransport.github.io/book/) and from L. Ambrosio [here](http://cvgmt.sns.it/media/doc/paper/1008/trasporto.pdf). 
+The problem of optimal transport is a well-studied problem with a long history and lot's of work from famous mathematicians (Monge, Kantorovich, Vilani, ...).  In its original formulation by Monge the problem is defined as follows: 
 
-To makes things more clear, let's graphically illustrate the problem using a bipartite graph as an example. Imagine the problem of having two factories preparing croissants, factory $S_1$ and $S_2$ and, three bakeries that sell these croissants: $T_1$, $T_2$ and $T_3$. Transfeting croissants from the sources $S_i$ to the targets $T_j$ involves different costs depending on their distance. The optimal transport problem seeks the solution of transfering all the croissants from the factories $S_i$ to the bakeries $T_j$ minimizing the associated cost of transfer. In the following figure for instance, I illustrate the source and the target points, the availability (100+200) and the demand (100+100+100) for croissants, and the costs from $S_1$ to $T_j$.
+*Given two distributions of equal masses, find a transport map $\gamma$  which transfers the first distribution to the second and minimizes the associated transport cost.* 
+
+There are mathematical formulations for the problem both for the continuous and the discrete case. For simplicity, I will skip them here, as they can be found both in the paper and in several textbooks: e.g., from G. Peyré and M. Cuturi [here](https://optimaltransport.github.io/book/) and from L. Ambrosio [here](http://cvgmt.sns.it/media/doc/paper/1008/trasporto.pdf). 
+
+To make the problem formulation more clear, let's graphically illustrate the problem using a bipartite graph as an example. Imagine the problem of having two factories preparing croissants denoted as factory $S_1$ and $S_2$ and, three bakeries that sell these croissants: $T_1$, $T_2$ and $T_3$. Transfeting croissants from the source factories $S_i$ to the target bakeries $T_j$ involves different costs depending for instance on their distance. The optimal transport problem seeks the solution of transfering all the croissants from the factories $S_i$ to the bakeries $T_j$ while minimizing the associated cost of transfer. In the following figure for instance, I illustrate the source and the target points, the availability  and the demand for croissants, and the costs from $S_1$ to $T_j$. There are similar costs for $S_2$ but not shown in the figure to keep it readable.  Notice how the availability (200+100) equals the demand (100) for croissants.
 
 ![Optimal transport example]({{ site.url }}/assets/optimalTransportExample.png)
 
+A more general case is shown in the figure below, where all the partial costs between the sources and target nodes are shown and their values are the elements of the array $D$. An associated array $\gamma$ is shown: this is the transport plan that describes the mass that will be transported from the source nodes to the target nodes. For example, the $\gamma_{i,j}$ element is the amount of mass (croissants) that will be transfered from $S_i$ to $T_j$. The total cost of the transportation is the sum of the element-wise multiplication between $D$ and $\gamma$.
+
+![Optimal transport example]({{ site.url }}/assets/optimalTransportExample2.png)
 
 
