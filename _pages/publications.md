@@ -8,6 +8,9 @@ date: 2017-03-14T18:38:52+00:00
 Here is a list of publications made during my PhD. 
 
 ## Full Papers
+- Georgios Balikas, Charlotte Laclau, Ievgen Redko, and Massih-Reza Amini: 
+  **Cross-lingual Document Retrieval using Regularized Wasserstein Distance**, *ECIR 2018*, Grenoble, France, 2018
+
 - Hesam Amoualian, Wei Lu, Eric Gaussier, Georgios Balikas, Massih R Amini and Marianne Clausel:
 **Topical Coherence in LDA-based Models through Induced Segmentation**, *ACL 2017*, Vancouver, Canada, 2017
 
