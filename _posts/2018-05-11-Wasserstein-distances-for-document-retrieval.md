@@ -31,6 +31,18 @@ To make the problem formulation more clear, let's graphically illustrate the pro
 
 A more general case is shown in the figure below, where all the partial costs between the sources and target nodes are shown and their values are the elements of the array $D$. An associated array $\gamma$ is shown: this is the transport plan that describes the mass that will be transported from the source nodes to the target nodes. For example, the $\gamma_{i,j}$ element is the amount of mass (croissants) that will be transfered from $S_i$ to $T_j$. The total cost of the transportation is the sum of the element-wise multiplication between $D$ and $\gamma$.
 
-![Optimal transport example]({{ site.url }}/assets/optimalTransportExample2.png)
+![Optimal transport generalized example]({{ site.url }}/assets/optimalTransportExample2.png)
+
+# Optimal transport and text
+The nice idea of M. Kusner et al. is to combine the discrete distributions (bag-of-words) of documents and the expressiveness of word embeddings. Instead of croissant factories and bakeries in the sides of the above bipartite graphs we have bag-of-words document representations. And to estimate the costs of transfering the words of the documents between them, we use word embeddings. Again, the figure below taken from the paper of Kusner et al. illustrates this idea.  
+
+![Word Movers Distance example]({{ site.url }}/assets/wmd.png)
+
+Notice that while the input documents 1 and 2 do not share any common words (apart from stop-words) they are semantically very similar. The reason why they are semantically similar is shown in the middle of the figure that shows the per-word similarities captured by the word embeddings. That said, the distance of the two documents can be calculated by solving the optimal transport problem: 
+
+![Word Movers Distance example explained]({{ site.url }}/assets/wmd_explained.png)
+ 
+In this graph, documents 1 and 2 are sparse bag-of-words distributions. Naturally, the distances between the graph elements can be calculated by taking the Euclidean distance between the embeddings of the words. This distance metric is called Word Movers Distance (similar to Earth Movers Distance), and works quite well in practice. Two of the limitations is the computational complexity as for each document pairs an optimization problem needs be solved, and the smoothness of the transport plan.
+
 
 
