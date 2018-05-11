@@ -51,9 +51,9 @@ In this graph, documents 1 and 2 are sparse bag-of-words distributions $l_1$-nor
 
 # Adding regularization to the Wasserstein distance
 M. Cuturi recently proposed to add regularization to the Wasserstein problem. Instead of solving 
-$$ \min_{\gamma \in \Pi(\hat{\mu}_S, \hat{\mu}_T)}\langle A, \gamma\rangle_F $$ 
+$$ W(\mu_S, mu_T) = \min_{\gamma \in \Pi(\hat{\mu}_S, \hat{\mu}_T)}\langle A, \gamma\rangle_F $$ 
 he suggested to solve 
-$$ $W(\mu_S, mu_T)= \min_{\gamma \in \Pi(\hat{\mu}_S, \hat{\mu}_T)}\langle A, \gamma\rangle_F$ - \frac{1}{\lambda}E(\gamma) $$
+$$ W(\mu_S, mu_T)= \min_{\gamma \in \Pi(\hat{\mu}_S, \hat{\mu}_T)}\langle A, \gamma\rangle_F$ - \frac{1}{\lambda}E(\gamma) $$
 where $E(\gamma)$ is the entropy of the transport plan and $\lambda$ is a parameter to be tuned that controls the effect of the regularization term. 
 Two very important advantages stem from the addition of the regularization term which are of interest for the text applications we are interested in: 
 1. The optimization problem can be solved by an iterative algorithm called Sinkhorm Knopp, which has linear complexity $O(n)$. Compared to the cubic complexity when not using regularization this is a nice boost. Also, Sinkhorm Knopp involves matrix multiplication that can be accelerated by the use of GPUs.
