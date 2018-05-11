@@ -33,6 +33,9 @@ A more general case is shown in the figure below, where all the partial costs be
 
 ![Optimal transport generalized example]({{ site.url }}/assets/optimalTransportExample2.png)
 
+
+Summarizing, the optimal transport problem tries to minimize the cost of transfering one distribution to another. The distance between these two distributions is called Wasserstein distance and it is also known as Earthe Movers distance. Mathematically, given two distributions $\mu_S, mu_T$ the Wasserstein distance between them is the solution to the minimization problem $W(\mu_S, mu_T)= \min_{\gamma \in \Pi(\hat{\mu}_S, \hat{\mu}_T)}\langle A, \gamma\rangle_F$, where $\Pi$ is the set of possible transport plans between the two distributions.
+
 # Optimal transport and text
 The nice idea of M. Kusner et al. is to combine the discrete distributions (bag-of-words) of documents and the expressiveness of word embeddings. Instead of croissant factories and bakeries in the sides of the above bipartite graphs we have bag-of-words document representations. And to estimate the costs of transfering the words of the documents between them, we use word embeddings. Again, the figure below taken from the paper of Kusner et al. illustrates this idea.  
 
@@ -42,7 +45,12 @@ Notice that while the input documents 1 and 2 do not share any common words (apa
 
 ![Word Movers Distance example explained]({{ site.url }}/assets/wmd_explained.png)
  
-In this graph, documents 1 and 2 are sparse bag-of-words distributions. Naturally, the distances between the graph elements can be calculated by taking the Euclidean distance between the embeddings of the words. This distance metric is called Word Movers Distance (similar to Earth Movers Distance), and works quite well in practice. Two of the limitations is the computational complexity as for each document pairs an optimization problem needs be solved, and the smoothness of the transport plan.
+In this graph, documents 1 and 2 are sparse bag-of-words distributions $l_1$-normalized term frequency co-efficients. The normalization ensures that the source and the target distributions are of equal size. Naturally, the distances between the graph elements can be calculated by taking the Euclidean distance between the embeddings of the words. This distance metric is called Word Movers Distance (similar to Earth Movers Distance), and works quite well in practice. Two of the limitations of this distance measure are:
+1. the computational complexity as for each document pair an optimization problem needs be solved, and 
+2. the smoothness of the transport plan as it turns out that the minimization problem results in a dense matrix $\gamma$.
+
+
+
 
 
 
