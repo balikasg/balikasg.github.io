@@ -12,6 +12,7 @@ Regularized Wasserstein Distance". In case the paper's title sounds complicated,
   MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
       processEscapes: true
     }
   });
