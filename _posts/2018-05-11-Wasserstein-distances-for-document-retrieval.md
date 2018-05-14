@@ -5,8 +5,8 @@ tags: ["data science"]
 mathjax: true
 ---
 
-In this post I would like to detail the ideas behind our ECIR 2018 paper, titled "Cross-lingual Document Retrieval using
-Regularized Wasserstein Distance". In case the paper's title sounds complicated, bear with me as the central idea is straight-forward. The paper builds on the seminal work of [M. Kusner et al.](http://proceedings.mlr.press/v37/kusnerb15.pdf) where they propose to combine the expressiveness of word embeddings with the theory of optimal transport. 
+In this post I would like to detail the ideas behind our ECIR 2018 paper, titled [Cross-lingual Document Retrieval using
+Regularized Wasserstein Distance](https://arxiv.org/pdf/1805.04437.pdf). In case the paper's title sounds complicated, bear with me as the central idea is straight-forward. The paper builds on the seminal work of [M. Kusner et al.](http://proceedings.mlr.press/v37/kusnerb15.pdf) where they propose to combine the expressiveness of word embeddings with the theory of optimal transport. 
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
