@@ -78,15 +78,17 @@ or you may be tempted to do:
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--my-entities", type=str )
-cmd_line = ["--my-entities", "['005', '500']"]
+parser.add_argument("--my-categories", type=str )
+cmd_line = ["--my-categories", "['005', '500']"]
 print(parser.parse_args(cmd_line))
-# returns Namespace(my_entities="['005', '500']")
+# returns Namespace(my_categories="['005', '500']")
 # then you go and apply ast.literal_eval
 ```
 
-But this is not good separation of concerns. 
-How to do it [StackOverflow reference](https://stackoverflow.com/questions/15753701/how-can-i-pass-a-list-as-a-command-line-argument-with-argparse/15753721#15753721):
+But this is not good separation of concerns. `argparser` can do argument validation for you for example. And you can achieve this out-of-the-box.
+
+
+How to do it [StackOverflow reference](https://stackoverflow.com/questions/15753701/how-can-i-pass-a-list-as-a-command-line-argument-with-argparse/15753721#15753721)
 ```python
 # this is test.py
 import argparse
