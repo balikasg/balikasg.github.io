@@ -11,7 +11,7 @@ I am Georgios Balikas :-)
 Currntly, I am working as a Sr. Data Scientist for Salesforce in Grenoble, France.
 
 The website aims to serve mostly as a blog, where I share things I find interesting. 
-These are in the intersection of academia and industry. about data science and NLP. 
+These are in the intersection of academia and industry about data science and NLP. 
 
 ## My research interests
 - Natural Language Processing
