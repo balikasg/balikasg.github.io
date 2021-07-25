@@ -6,10 +6,15 @@ mathjax: fasle
 ---
 
 
-In this post I am sharing best practises on using Python's `argparser`. These is common feedback I give in pull request reviews. 
+In this post I am sharing best practises on using Python's `argparser`. This is common feedback I have given in pull request reviews over the past few years. 
 
 Why would you care:
 - Creating meaningful argument parsing is a skill. It can really make a difference on how useful your code is and how easily others can use it. 
+
+There are at least two main common error patterns I observed: 
+- How to pass booleans
+- How to pass lists
+Both are very reasonable things to want to do; each gets a small section below. 
 
 
 ## Booleans
