@@ -55,7 +55,7 @@ df.select([
 ]).collect().limit(10)
 ```
 The results looks like this: 
-[Polars output]({{ site.url }}/assets/polars-polars.png)
+![Polars output]({{ site.url }}/assets/polars-polars.png)
 They both return identical results (except the day of week, which has a delta of 1). The difference is that the polars code takes 860ms!!! **It is around 8x faster!**
 What is more, the syntax is really nice for my taste! The way select is used and the way window aggregations can do groupBy's (look the use of `.over`) is very elegant! Notice, that all these aggregations are done within a single select and polars takes care of executing them embarassingly parallel!
 
