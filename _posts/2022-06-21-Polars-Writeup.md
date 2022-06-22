@@ -24,6 +24,10 @@ I will illsutrate an initial feature generation pipeline, both with pandas and w
 After loading the data, we will extract some timeseries features (weekday, month) and some user prevalance stats (Number of queries and number of clicks a user did). Also, we will append a column on the data with the number of times a query occurs in the data. Typically, in pandas you would do groupBy and joins for such features. 
 Here we will do one groupBy with Named aggregations and we will also use `transform` to elegantly add columns to the dataframe. 
 
+Here is how the data look like: 
+![AOL data head]({{ site.url }}/assets/polars1.png)
+From the columns, `AnonID` is a `user_id`, and `ItemRank` and `ClickURL` are the position and the url of the clicked item when someone clicked (NaN otherwise). 
+
 Here is the pandas code:
 ```python
 df = pd.read_csv(path_to_data, delimiter="\t")
