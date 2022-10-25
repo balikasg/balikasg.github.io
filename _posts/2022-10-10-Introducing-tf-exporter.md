@@ -104,3 +104,93 @@ So what sentence-transformers does to get predictions it forward's sequentially 
 listed in the `modules.json` file. Which is exactly what we need to implement in the conversion code: 
 We need to parse these configs and instantiate the same modules as tensorflow code and then persist it. A challenge is that, often, 
 the weights of these individual modules can be in pytorch. Getting this to tensorflow can require some work.
+
+# Implementing the transformer tokenizer with tensorflow operations
+You can browse the code that convert a pytorch base tranformer model with its tokenizer to a single graph in [tf-exporter/models.py](https://github.com/balikasg/tf-exporter/blob/master/tf_packager/models.py).
+The basic idea is to use tensorflow text operations in order to create the tokenizer functionality.
+
+Implementing a "Bert" tokenizer requires populating a look-up table and this can be done once we read the `vocab.txt` file of the model in sentence-transformers.
+```python
+vocabulary_path = /path/to/sentence-transfoermers-model/vocab.txt
+with open(str(vocabulary_path), "r", encoding="utf8") as infile:
+    file_content = infile.read().split()
+vocab_ = [str.encode(word) for word in file_content]
+
+lookup_table = tf.lookup.StaticVocabularyTable(
+    tf.lookup.KeyValueTensorInitializer(
+        keys=self._vocab,
+        key_dtype=tf.string,
+        values=tf.range(
+            tf.size(self._vocab, out_type=tf.int64), dtype=tf.int64
+        ),
+        value_dtype=tf.int64,
+    ),
+    num_oov_buckets=1,
+        )
+do_lower_case = config["do_lower_case"]  # config is the tokenizer config in sentence-transformer model
+tokenizer = text.BertTokenizer(lookup_table, token_out_type=tf.int64, lower_case=do_lower_case)
+```
+
+With this information the tokenizer can already tokenize a single input. To adapt for batches and also include start and end tokens we need a few more tensorflow operations:
+
+```python
+def add_start_end(self, ragged):
+    """Adds START and END special token ids in the ragged tensor `ragged`"""
+    count = ragged.bounding_shape()[0]  # Gets shape (batch_size) of ragged
+    starts = tf.fill([count, 1], tf.cast(self._start_token, tf.int64))
+    ends = tf.fill([count, 1], tf.cast(self._end_token, tf.int64))
+    return tf.concat(values=[starts, tf.squeeze(ragged, axis=1), ends], axis=1)
+
+trimmer = text.RoundRobinTrimmer(max_seq_length=max_seq_length)
+tokens = tokenizer.tokenize(batch).merge_dims(-2, -1)
+tokens = trimmer.trim([tokens])
+tokens = add_start_end(tokens[0])
+input_word_ids, input_mask = text.pad_model_inputs(tokens, max_seq_length=self._max_seq_length)
+```
+Voila! At this point we can directly query the models using `input_word_ids`, `input_mask`!
+
+# Implementing a dense layer
+
+Implementing the other required modules is done in the same way. The principle is to adapt the pytorch code in the tensorflow framework. As another example, here is the implementation of a dense module:
+
+
+```python
+class TfDense(tf.keras.layers.Layer):
+    """Implements the transformation of a pytorch dense layer to a tensorflow dense layer."""
+
+    def __init__(self, tf_dense_layer: tf.keras.layers.Dense):
+        super().__init__()
+        self.dense_layer = tf_dense_layer
+
+    def call(self, inputs):
+        """Executes the forward pass on a input `inputs`"""
+        return self.dense_layer(inputs)
+
+    @staticmethod
+    def load(input_path):
+        """Instantiates a tf dense keras models from a pytorch one"""
+        input_path = Path(input_path)
+        with open(input_path / MODULE_CONFIG) as infile:
+            config = json.load(infile)
+        if (input_path / PYTORCH_MODEL).exists():
+            # Gets weights as an OrderedDict with keys 'linear.weight' and 'linear.bias'
+            dense_weights = models.Dense.load(input_path).state_dict()
+            # Get a tf linear model
+            activation_fn = config["activation_function"].rsplit(".", 1)[-1].lower()
+            tf_dense = tf.keras.layers.Dense(
+                units=config["out_features"],
+                input_shape=(config["in_features"],),
+                activation=activation_fn,
+                weights=[
+                    dense_weights["linear.weight"].numpy().T,
+                    dense_weights["linear.bias"].numpy().T,
+                ],
+            )
+            return TfDense(tf_dense)
+        raise ImportError(
+            f"Could not find {PYTORCH_MODEL} under {input_path}. "
+            f"{TF_MODEL} not currently supported for Dense Layer initialization."
+        )
+```
+
+The interesting things take place in `load` where the `sentence-transformers` config is consumed to mine all the important information for the dense layer (e.g., shapes, activations), then the weights are loaded and a `tf.keras.layers.Dense` is populated accordingly!
