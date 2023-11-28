@@ -27,7 +27,7 @@ preprocessing:
 
 To implement argparsing updates, we would start with a `Config` class that simply reads from a yaml and implements the logic.
 Here is a skeleton: 
-```python3
+```python
 # This is the main.py code
 from typing import Dict, List, Union
 from pathlib import Path
