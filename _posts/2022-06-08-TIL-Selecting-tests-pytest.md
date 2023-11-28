@@ -2,7 +2,7 @@
 title:  "TIL: Selecting a subset of tests with pytest"
 categories: ["Python"]
 tags: ["best practises"]
-mathjax: fasle
+mathjax: false
 ---
 
 During development we often want to select a subset of tests to run. Quick pointers on how to do so: 
