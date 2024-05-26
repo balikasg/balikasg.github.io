@@ -8,17 +8,16 @@ date: 2017-03-14T18:38:52+00:00
 ## Welcome to my personal website!!
 
 I am Georgios Balikas :-) 
-Currently, I am working as a Sr. Data Scientist for Salesforce in Grenoble, France.
+Currently, I am the Chief scientist in Kelkoo Group, based in Grenoble, France!  
 
 The website aims to serve mostly as a blog, where I share things I find interesting. 
 These are in the intersection of academia and industry about data science and NLP. 
 
 ## My research interests
+- Optimization 
+- Marketing Mix Modeling 
 - Natural Language Processing
-- Distributed Representations
-- Language Modelling
+- Large Language Models 
 - Neural Networks and Deep Learning
-- Topic Modelling
-- Sentiment Analysis
 - Machine learning and Information Retrieval applications such as: Classification, Clustering and Summarization
 
