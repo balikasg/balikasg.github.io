@@ -21,3 +21,5 @@ These are in the intersection of academia and industry about data science and NL
 - Neural Networks and Deep Learning
 - Machine learning and Information Retrieval applications such as: Classification, Clustering and Summarization
 
+Here is a version of my [CV](({{ site.url }}/assets/Balikas-CV-2page.pdf))! 
+
